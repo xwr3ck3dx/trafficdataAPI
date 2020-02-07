@@ -16,7 +16,7 @@
         }
 
         public function read(){
-            $query = 'SELECT * from '.$this->table.' ORDER BY date INC';
+            $query = 'SELECT * from '.$this->table;
 
             $stmt= $this->conn->prepare($query);
 
