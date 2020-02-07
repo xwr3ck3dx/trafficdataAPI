@@ -21,12 +21,12 @@
         while($row = $result->fetch(PDO::FETCH_ASSOC)){
             extract($row);
             $trafficdata_item =array(
-                'ip' => $id,
+                'ip' => $ip,
                 'date' => $date,
                 'inBytes' => $inBytes,
                 'outBytes' => $outBytes
             );
-            array_push($trafficdata['data'], $trafficdata_item);
+            array_push($trafficdata_arr['data'], $trafficdata_item);
         }
 
         echo json_encode($trafficdata_arr);
