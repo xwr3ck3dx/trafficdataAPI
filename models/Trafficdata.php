@@ -15,8 +15,8 @@
             $this->conn = $db;
         }
 
-        public function read() {
-            $query = 'SELECT ip, date, inBytes, outBytes from '.$this->table.' ORDER BY date INC';
+        public function read(){
+            $query = 'SELECT * from '.$this->table.' ORDER BY date INC';
 
             $stmt= $this->conn->prepare($query);
 
