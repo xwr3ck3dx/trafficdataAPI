@@ -18,7 +18,7 @@
         $trafficdata_arr = array();
         $trafficdata_arr['data']= array();
 
-        while($row = $result->fetch(PDO::FETCH_ASSOC){
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
             extract($row);
             $trafficdata_item =array(
                 'ip' => $id,
