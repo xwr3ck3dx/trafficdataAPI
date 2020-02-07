@@ -8,7 +8,7 @@
     $database = new Database();
     $db= $database->connect();
 
-    $trafficdata=new Post($db);
+    $trafficdata=new Trafficdata($db);
 
     $result = $trafficdata->read();
     $num = $result->rowCount();
