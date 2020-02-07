@@ -26,7 +26,7 @@
                 'inBytes' => $inBytes,
                 'outBytes' => $outBytes
             );
-            array_push($trafficdata['data'],$trafficdata_item);
+            array_push($trafficdata['data'], $trafficdata_item);
         }
 
         echo json_encode($trafficdata_arr);
