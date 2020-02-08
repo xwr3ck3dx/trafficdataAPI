@@ -58,7 +58,8 @@
 					}
 				}]
 			},
-			responsive: false,
+			responsive: true,
+			maintainAspectRatio: false,
 		}
 	});
 </script>
