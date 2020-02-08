@@ -51,10 +51,7 @@
 	var myChart = new Chart(ctx, {
 		type: 'bar',
 		data: data,
-		options: {
-			responsive: true,
-			maintainAspectRatio: false
-		}
+		options: {		}
 	});
 </script>
 
