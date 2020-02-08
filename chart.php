@@ -8,14 +8,14 @@
         curl_close($ch);
         $response=json_decode($response_json, true);
 ?>
-<!DOCTYPE HTML>
+
 <html>
 <head>  
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 </head>
 <body>
-<canvas id="myChart" width="400" height="400"></canvas>
+<canvas id="myChart" width="100%" height="400"></canvas>
 <script>
 	var ctx = 'myChart';
 	var data = {
