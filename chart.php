@@ -57,11 +57,11 @@
 						beginAtZero: true
 					}
 				}]
-			}
+			},
+			responsive: false,
 		}
 	});
 </script>
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
 
 </body>
 </html>
