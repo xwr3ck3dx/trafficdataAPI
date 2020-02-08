@@ -12,6 +12,7 @@
 <html>
 <head>  
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 </head>
 <body>
 <canvas id="myChart" width="400" height="400"></canvas>
@@ -59,6 +60,6 @@
 	});
 </script>
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
 </body>
 </html>
