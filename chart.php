@@ -135,7 +135,7 @@
 				borderWidth: 1,
 				data: [
 					<?php foreach($response['data'] as $data){ ?>
-							<?php echo $data['inBytes']?>,
+							<?php echo (int)$data['inBytes']/1024?>,
 					<?php }?>
 				]
 			}, {
@@ -145,7 +145,7 @@
 				borderWidth: 1,
 				data: [
 					<?php foreach($response['data'] as $data){ ?>
-							<?php echo $data['inBytes']?>,
+							<?php echo (int)$data['inBytes']/1024?>,
 					<?php }?>
 				]
 			}]
