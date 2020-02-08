@@ -51,15 +51,8 @@
 		type: 'bar',
 		data: data,
 		options: {
-			scales: {
-				yAxes: [{
-					ticks: {
-						beginAtZero: true
-					}
-				}]
-			},
 			responsive: true,
-			maintainAspectRatio: true,
+			
 		}
 	});
 </script>
