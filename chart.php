@@ -51,14 +51,41 @@
 				},
 			]
 	};
-	var myChart = new Chart(ctx, {
-		type: 'bar',
-		data: data,
-		options: {
-			responsive: false,
-			maintainAspectRatio:false
-		}
-	});
+	// var myChart = new Chart(ctx, {
+	// 	type: 'bar',
+	// 	data: data,
+	// 	options: {
+	// 		responsive: false,
+	// 		maintainAspectRatio:false
+	// 	}
+	// });
+	window.onload = function() {
+			var ctx = document.getElementById('canvas').getContext('2d');
+			window.myBar = new Chart(ctx, {
+				type: 'bar',
+				data: data,
+				options: {
+					title: {
+						display: true,
+						text: 'Chart.js Bar Chart - Stacked'
+					},
+					tooltips: {
+						mode: 'index',
+						intersect: false
+					},
+					responsive: true,
+					scales: {
+						xAxes: [{
+							stacked: true,
+						}],
+						yAxes: [{
+							stacked: true
+						}]
+					}
+				}
+			});
+		};
+
 </script>
 
 </body>
