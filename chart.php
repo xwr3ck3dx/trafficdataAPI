@@ -104,7 +104,7 @@
 <head>
 	<title>Bar Chart</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css">
- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
+ <script src="chart.min.js"></script>
  <script>
  'use strict';
 
