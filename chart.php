@@ -103,8 +103,8 @@
 
 <head>
 	<title>Bar Chart</title>
-	<script src="../../../../dist/2.9.3/Chart.min.js"></script>
-	<script src="../../utils.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
 	<style>
 	canvas {
 		-moz-user-select: none;
