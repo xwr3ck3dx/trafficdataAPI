@@ -59,7 +59,7 @@
 				}]
 			},
 			responsive: true,
-			maintainAspectRatio: false,
+			maintainAspectRatio: true,
 		}
 	});
 </script>
