@@ -60,7 +60,7 @@
 	// 	}
 	// });
 	window.onload = function() {
-			var ctx = document.getElementById('canvas').getContext('2d');
+			var ctx = document.getElementById('myChart').getContext('2d');
 			window.myBar = new Chart(ctx, {
 				type: 'bar',
 				data: data,
