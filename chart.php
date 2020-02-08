@@ -20,7 +20,6 @@
 
 </div>
 
-<canvas id="myChart"></canvas>
 <script>
 	var ctx = 'myChart';
 	var data = {
