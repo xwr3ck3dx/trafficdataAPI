@@ -24,6 +24,18 @@
 
             return $stmt;
         }
+
+        public function readip(){
+            $query = 'SELECT * from '.$this->table.' WHERE ip= ?';
+
+            $stmt= $this->conn->prepare($query);
+ 	    $stmt->bindParam(1, $this->ip);
+            $stmt->execute();
+ 
+	
+            return $stmt;
+        }
+  
     }
 
 ?>
