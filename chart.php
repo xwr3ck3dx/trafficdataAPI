@@ -53,7 +53,7 @@
 		data: data,
 		options: {
 			responsive: true,
-			
+			maintainAspectRatio: false
 		}
 	});
 </script>
