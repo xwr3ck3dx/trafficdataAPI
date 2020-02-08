@@ -49,7 +49,7 @@
 			]
 	};
 	var myChart = new Chart(ctx, {
-		type: bar,
+		type: 'bar',
 		data: data
 	});
 </script>
