@@ -26,8 +26,9 @@
 		],
 		    datasets: [
 				{
-					label: "Blue",
-					backgroundColor: "blue",
+					label: "inBytes",
+					backgroundColor: "rgba(255, 99, 132, 0.2)",
+					borderColor: "rgba(255, 99, 132, 1)" ,
 					data: [
 						<?php foreach($response['data'] as $data){ ?>
 							"<?php echo $data['inBytes']?>",
@@ -35,8 +36,9 @@
 					]
 				},
 				{
-					label: "Red",
-					backgroundColor: "red",
+					label: "outBytes",
+					backgroundColor: "rgba(255, 99, 132, 0.2)",
+					borderColor: "rgba(255, 99, 132, 1)",
 					data: [
 						<?php foreach($response['data'] as $data){ ?>
 							"<?php echo $data['outBytes']?>",
