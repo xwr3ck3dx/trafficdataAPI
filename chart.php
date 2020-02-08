@@ -12,7 +12,7 @@
 <html>
 <head>  
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
 </head>
 <body>
 
@@ -48,11 +48,7 @@
 				},
 			]
 	};
-	var myChart = new Chart(ctx, {
-		type: 'bar',
-		data: data,
-		options: {		}
-	});
+	var myChart = new Chart(ctx).Bar(data);
 </script>
 
 </body>
