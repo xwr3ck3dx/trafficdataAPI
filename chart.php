@@ -15,7 +15,8 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 </head>
 <body>
-<canvas id="myChart" width="400" height="400"></canvas>
+
+<canvas id="myChart"></canvas>
 <script>
 	var ctx = 'myChart';
 	var data = {
