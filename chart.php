@@ -48,7 +48,10 @@
 				},
 			]
 	};
-	var myChart = new Chart(ctx).Bar(data);
+	var myChart = new Chart(ctx, {
+		type: bar,
+		data: data
+	});
 </script>
 
 </body>
