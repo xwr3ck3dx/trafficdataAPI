@@ -59,8 +59,8 @@ jQuery.fn.dataTable.Api.register( 'sum()', function ( ) {
 			<tr>
 				<td></td>
 				<td  style="font-weight:600;text-align:center">Sum</td>
-				<td id="sumIn" style="font-weight:600;text-align:center"></td>
-				<td id="sumOut" style="font-weight:600;text-align:center"></td>
+				<td id="sumIn" style="font-weight:600"></td>
+				<td id="sumOut" style="font-weight:600"></td>
 			</tr>
 		</tfoot>
     </table>
