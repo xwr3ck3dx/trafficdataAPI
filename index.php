@@ -49,15 +49,15 @@
 	</div>
 <script>
 $(document).ready( function () {
-    $('#table_id').DataTable();
+    
 	$('#table_id').DataTable( {
-    drawCallback: function () {
-      var api = this.api();
-      $( api.table().footer() ).html(
-        api.column( 4, {page:'current'} ).data().sum()
-      );
-    }
-  } );
+		drawCallback: function () {
+			var api = this.api();
+			$( api.table().footer() ).html(
+				api.column( 4, {page:'current'} ).data().sum()
+			);
+		}
+  	} );
 } );
 
 
