@@ -75,7 +75,8 @@ $(document).ready( function () {
 		drawCallback: function () {
 			var api = this.api();
 			$( api.table().footer() ).html(
-				api.column( 3, {page:'current'} ).data().sum()
+				api.column( 3, {page:'current'} ).data().sum(),
+				api.column( 2, {page:'current'} ).data().sum()
 			);
 		}
   	} );
