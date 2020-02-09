@@ -59,8 +59,8 @@ jQuery.fn.dataTable.Api.register( 'sum()', function ( ) {
 			<tr>
 				<td></td>
 				<td></td>
-				<td></td>
-				<td></td>
+				<td id="sumIn"></td>
+				<td id="sumOut"></td>
 			</tr>
 		</tfoot>
     </table>
@@ -74,9 +74,11 @@ $(document).ready( function () {
 	$('#table_id').DataTable( {
 		drawCallback: function () {
 			var api = this.api();
-			$( api.table().footer() ).html(
+			$( "#sumIn" ).html(
+				api.column( 2, {page:'current'} ).data().sum(),
+			);
+			$( "#sumOut" ).html(
 				api.column( 3, {page:'current'} ).data().sum(),
-				api.column( 2, {page:'current'} ).data().sum()
 			);
 		}
   	} );
