@@ -55,6 +55,8 @@ jQuery.fn.dataTable.Api.register( 'sum()', function ( ) {
 	<?php  } ?>
 
     	</tbody>
+		<tfoot>
+		</tfoot>
     </table>
 
 
