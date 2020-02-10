@@ -48,7 +48,7 @@ jQuery.fn.dataTable.Api.register( 'sum()', function ( ) {
 
                 	<tr>
 			<td><?php echo $data['date']; ?></td>
-                	<td><a href="http://10.10.40.110:8080/trafficdataAPI/chart.php?ip=<?php echo $data['ip']; ?>"><?php echo $data['ip']; ?></a></td>
+                	<td><a href="http://10.10.40.110:8080/trafficdataAPI/chart.php?ip=<?php echo $data['ip']; ?>" target="_blank"><?php echo $data['ip']; ?></a></td>
                 	<td><?php echo $data['inBytes']; ?></td>
 			<td><?php echo $data['outBytes']; ?></td>
                 	</tr>
