@@ -191,7 +191,7 @@ window.chartColors = {
 		var barChartData = {
 			labels: [
 					<?php foreach($response['data'] as $data){ ?>
-								'<?php echo $data['inBytes'] ?>',
+								'<?php echo $data['date'] ?>',
 					<?php }?>
 				],
 			datasets: [{
