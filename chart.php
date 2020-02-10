@@ -201,7 +201,7 @@ window.chartColors = {
 				borderWidth: 1,
 				data: [
 					<?php foreach($response['data'] as $data){ ?>
-							<?php echo (int)$data['inBytes']/1024;?>,
+							<?php echo round($data['inBytes']/1048576);?>,
 					<?php }?>
 				]
 			}, {
@@ -211,7 +211,7 @@ window.chartColors = {
 				borderWidth: 1,
 				data: [
 					<?php foreach($response['data'] as $data){ ?>
-							<?php echo (int)$data['outBytes']/1024;?>,
+							<?php echo round($data['outBytes']/1048576);?>,
 					<?php }?>
 				]
 			}]
