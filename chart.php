@@ -29,11 +29,11 @@
 	<div id="container" style="width: 75%;">
 		<canvas id="canvas"></canvas>
 	</div>
-	<button id="randomizeData">Randomize Data</button>
+	<!-- <button id="randomizeData">Randomize Data</button>
 	<button id="addDataset">Add Dataset</button>
 	<button id="removeDataset">Remove Dataset</button>
 	<button id="addData">Add Data</button>
-	<button id="removeData">Remove Data</button>
+	<button id="removeData">Remove Data</button> -->
 	<script>
 		// var MONTHS = [
 		// 	<?php foreach($response['data'] as $data){ ?>
