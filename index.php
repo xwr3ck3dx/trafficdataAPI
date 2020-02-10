@@ -1,145 +1,92 @@
-<?php ?>
-<!doctype html>
+<?php
+
+	$url = 'http://10.10.40.110:8080/trafficdataAPI/api/read.php';
+	$ch = curl_init($url);
+	curl_setopt($ch, CURLOPT_HTTPGET, true);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	$response_json = curl_exec($ch);
+	curl_close($ch);
+	$response=json_decode($response_json, true);
+	
+
+?>
 <html>
-
 <head>
-	<title>Bar Chart</title>
-	<script src="chart.min.js"></script>
-	<script src="utils.js"></script>
-	<style>
-	canvas {
-		-moz-user-select: none;
-		-webkit-user-select: none;
-		-ms-user-select: none;
-	}
-	</style>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.20/fc-3.3.0/fh-3.1.6/r-2.2.3/sc-2.0.1/sp-1.0.1/datatables.min.css"/>
+ 
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.20/fc-3.3.0/fh-3.1.6/r-2.2.3/sc-2.0.1/sp-1.0.1/datatables.min.js"></script>
+<script>
+jQuery.fn.dataTable.Api.register( 'sum()', function ( ) {
+    return this.flatten().reduce( function ( a, b ) {
+        if ( typeof a === 'string' ) {
+            a = a.replace(/[^\d.-]/g, '') * 1;
+        }
+        if ( typeof b === 'string' ) {
+            b = b.replace(/[^\d.-]/g, '') * 1;
+        }
+ 
+        return a + b;
+    }, 0 );
+} );
+</script>
+
 </head>
-
 <body>
-	<div id="container" style="width: 75%;">
-		<canvas id="canvas"></canvas>
+	<div class="container" style="margin-top:50px">
+    <table id="table_id" class="table">
+    	<thead>
+        	<tr>
+            	<th>Date</th>
+            	<th>IP</th>
+            	<th>inBytes</th>
+            	<th>outBytes</th>
+        	</tr>
+    	</thead>
+    	<tbody>
+	<?php foreach($response['data'] as $data){  ?>
+
+                	<tr>
+			<td><?php echo $data['date']; ?></td>
+                	<td><?php echo $data['ip']; ?></td>
+                	<td><?php echo $data['inBytes']; ?></td>
+			<td><?php echo $data['outBytes']; ?></td>
+                	</tr>
+	<?php  } ?>
+
+    	</tbody>
+		<tfoot>
+			<tr>
+				<td></td>
+				<td  style="font-weight:600;text-align:center">Sum</td>
+				<td id="sumIn" style="font-weight:600"></td>
+				<td id="sumOut" style="font-weight:600"></td>
+			</tr>
+		</tfoot>
+    </table>
+
+
+
 	</div>
-	<button id="randomizeData">Randomize Data</button>
-	<button id="addDataset">Add Dataset</button>
-	<button id="removeDataset">Remove Dataset</button>
-	<button id="addData">Add Data</button>
-	<button id="removeData">Remove Data</button>
-	<script>
-		var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-		var color = Chart.helpers.color;
-		var barChartData = {
-			labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-			datasets: [{
-				label: 'Dataset 1',
-				backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
-				borderColor: window.chartColors.red,
-				borderWidth: 1,
-				data: [
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor()
-				]
-			}, {
-				label: 'Dataset 2',
-				backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
-				borderColor: window.chartColors.blue,
-				borderWidth: 1,
-				data: [
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor()
-				]
-			}]
+<script>
+$(document).ready( function () {
+    
+	$('#table_id').DataTable( {
+		drawCallback: function () {
+			var api = this.api();
+			$( "#sumIn" ).html(
+				api.column( 2, {page:'current'} ).data().sum(),
+			);
+			$( "#sumOut" ).html(
+				api.column( 3, {page:'current'} ).data().sum(),
+			);
+		}
+  	} );
+} );
 
-		};
 
-		window.onload = function() {
-			var ctx = document.getElementById('canvas').getContext('2d');
-			window.myBar = new Chart(ctx, {
-				type: 'bar',
-				data: barChartData,
-				options: {
-					responsive: true,
-					legend: {
-						position: 'top',
-					},
-					title: {
-						display: true,
-						text: 'Chart.js Bar Chart'
-					}
-				}
-			});
 
-		};
+</script>
 
-		document.getElementById('randomizeData').addEventListener('click', function() {
-			var zero = Math.random() < 0.2 ? true : false;
-			barChartData.datasets.forEach(function(dataset) {
-				dataset.data = dataset.data.map(function() {
-					return zero ? 0.0 : randomScalingFactor();
-				});
-
-			});
-			window.myBar.update();
-		});
-
-		var colorNames = Object.keys(window.chartColors);
-		document.getElementById('addDataset').addEventListener('click', function() {
-			var colorName = colorNames[barChartData.datasets.length % colorNames.length];
-			var dsColor = window.chartColors[colorName];
-			var newDataset = {
-				label: 'Dataset ' + (barChartData.datasets.length + 1),
-				backgroundColor: color(dsColor).alpha(0.5).rgbString(),
-				borderColor: dsColor,
-				borderWidth: 1,
-				data: []
-			};
-
-			for (var index = 0; index < barChartData.labels.length; ++index) {
-				newDataset.data.push(randomScalingFactor());
-			}
-
-			barChartData.datasets.push(newDataset);
-			window.myBar.update();
-		});
-
-		document.getElementById('addData').addEventListener('click', function() {
-			if (barChartData.datasets.length > 0) {
-				var month = MONTHS[barChartData.labels.length % MONTHS.length];
-				barChartData.labels.push(month);
-
-				for (var index = 0; index < barChartData.datasets.length; ++index) {
-					// window.myBar.addData(randomScalingFactor(), index);
-					barChartData.datasets[index].data.push(randomScalingFactor());
-				}
-
-				window.myBar.update();
-			}
-		});
-
-		document.getElementById('removeDataset').addEventListener('click', function() {
-			barChartData.datasets.pop();
-			window.myBar.update();
-		});
-
-		document.getElementById('removeData').addEventListener('click', function() {
-			barChartData.labels.splice(-1, 1); // remove the label first
-
-			barChartData.datasets.forEach(function(dataset) {
-				dataset.data.pop();
-			});
-
-			window.myBar.update();
-		});
-	</script>
 </body>
-
 </html>

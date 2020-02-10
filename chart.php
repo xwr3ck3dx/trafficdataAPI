@@ -1,4 +1,13 @@
+<?php
 
+        $url = 'http://10.10.40.110:8080/trafficdataAPI/api/readip.php?ip='.$_GET['ip'];
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_HTTPGET, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response_json = curl_exec($ch);
+        curl_close($ch);
+        $response=json_decode($response_json, true);
+?>
 <!doctype html>
 <html>
 
@@ -173,23 +182,27 @@ window.chartColors = {
 	<button id="addData">Add Data</button>
 	<button id="removeData">Remove Data</button>
 	<script>
-		var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+		var MONTHS = [
+			<?php foreach($response['data'] as $data){ ?>
+							"<?php echo $data['inBytes']?>",
+			<?php }?>
+		];
 		var color = Chart.helpers.color;
 		var barChartData = {
-			labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+			labels: [
+					<?php foreach($response['data'] as $data){ ?>
+								'<?php echo $data['inBytes'] ?>',
+					<?php }?>
+				],
 			datasets: [{
 				label: 'Dataset 1',
 				backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
 				borderColor: window.chartColors.red,
 				borderWidth: 1,
 				data: [
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor()
+					<?php foreach($response['data'] as $data){ ?>
+							<?php echo $data['inBytes']?>,
+					<?php }?>
 				]
 			}, {
 				label: 'Dataset 2',
@@ -197,13 +210,9 @@ window.chartColors = {
 				borderColor: window.chartColors.blue,
 				borderWidth: 1,
 				data: [
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor()
+					<?php foreach($response['data'] as $data){ ?>
+							<?php echo $data['outBytes']?>,
+					<?php }?>
 				]
 			}]
 
