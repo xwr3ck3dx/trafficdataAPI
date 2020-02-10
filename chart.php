@@ -48,7 +48,7 @@
 					<?php }?>
 				],
 			datasets: [{
-				label: 'Dataset 1',
+				label: 'Inbytes in KB',
 				backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
 				borderColor: window.chartColors.red,
 				borderWidth: 1,
@@ -58,7 +58,7 @@
 					<?php }?>
 				]
 			}, {
-				label: 'Dataset 2',
+				label: 'Outbytes in KB',
 				backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
 				borderColor: window.chartColors.blue,
 				borderWidth: 1,
