@@ -6,7 +6,9 @@
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $response_json = curl_exec($ch);
         curl_close($ch);
-        $response=json_decode($response_json, true);
+		$response=json_decode($response_json, true);
+		$monthInTotal=0;
+		$monthOutTotal=0;
 ?>
 <!doctype html>
 <html>
@@ -54,7 +56,7 @@
 				borderWidth: 1,
 				data: [
 					<?php foreach($response['data'] as $data){ ?>
-							<?php echo round($data['inBytes']/1024);?>,
+							<?php echo round($data['inBytes']/1024); $monthInTotal=$monthInTotal+$data['inBytes'];?>,
 					<?php }?>
 				]
 			}, {
@@ -64,7 +66,7 @@
 				borderWidth: 1,
 				data: [
 					<?php foreach($response['data'] as $data){ ?>
-							<?php echo round($data['outBytes']/1024);?>,
+							<?php echo round($data['outBytes']/1024); $monthOutTotal=$monthOutTotal+$data['outBytes'];?>,
 					<?php }?>
 				]
 			}]
@@ -83,7 +85,7 @@
 					},
 					title: {
 						display: true,
-						text: 'Data Usage chart for <?php echo $_GET['ip']; ?>'
+						text: 'Data Usage chart for <?php echo $_GET['ip']; ?> \n Total in= <?php echo $monthInTotal;?>\n Total out= <?php echo $monthOutTotal;?>'
 					}
 				}
 			});
