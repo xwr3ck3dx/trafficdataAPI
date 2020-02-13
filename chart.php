@@ -52,7 +52,7 @@
 			datasets: [{
 				label: 'Inbytes in KB',
 				backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
-				borderColor: window.chartColors.red,
+				borderColor: window.chartColors.green,
 				borderWidth: 1,
 				data: [
 					<?php foreach($response['data'] as $data){ ?>
