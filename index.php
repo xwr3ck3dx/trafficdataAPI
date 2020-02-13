@@ -1,6 +1,6 @@
 <?php
-
-	$url = 'http://10.10.40.110:8080/trafficdataAPI/api/read.php?month='.$_GET['month'];
+    $today = date("Y/m");
+	$url = 'http://10.10.40.110:8080/trafficdataAPI/api/read.php?month='.isset($_GET['month'])?$_GET['month']:$today;
 	$ch = curl_init($url);
 	curl_setopt($ch, CURLOPT_HTTPGET, true);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

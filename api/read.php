@@ -7,11 +7,9 @@
 
     $database = new Database();
     $db= $database->connect();
-    $today = date("Y/m");
-    echo $today;
-    return;
+
     $trafficdata=new Trafficdata($db);
-    $trafficdata->month=isset($_GET['month'])?$_GET['month']:$today;
+    $trafficdata->month=isset($_GET['month'])?$_GET['month']:die();
     $result = $trafficdata->read();
     $num = $result->rowCount();
 
