@@ -9,7 +9,7 @@
     $db= $database->connect();
 
     $trafficdata=new Trafficdata($db);
-    $trafficdata->month=isset($_GET['month'])?$_GET['month']:date("Y/m");
+    $trafficdata->month=isset($_GET['month'])?$_GET['month']:date('Y/m');
     $result = $trafficdata->read();
     $num = $result->rowCount();
 
