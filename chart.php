@@ -51,7 +51,7 @@
 				],
 			datasets: [{
 				label: 'Inbytes in KB',
-				backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+				backgroundColor: color(window.chartColors.green).alpha(0.5).rgbString(),
 				borderColor: window.chartColors.green,
 				borderWidth: 1,
 				data: [
