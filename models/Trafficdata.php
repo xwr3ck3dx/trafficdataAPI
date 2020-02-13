@@ -16,7 +16,7 @@
         }
 
         public function read(){
-            $query = 'SELECT * from '.$this->table.' WHERE date LIKE "?/%"';
+            $query = 'SELECT * from '.$this->table.' WHERE date LIKE ?"/%"';
 
             $stmt= $this->conn->prepare($query);
             $stmt->bindParam(1, $this->month);
