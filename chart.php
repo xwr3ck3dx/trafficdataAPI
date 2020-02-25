@@ -85,7 +85,7 @@
 					},
 					title: {
 						display: true,
-						text: 'Data Usage chart for <?php echo $_GET['ip']; ?>  Total in= <?php echo round($monthInTotal/1073741824);?>GB Total out= <?php  echo round($monthOutTotal/1073741824);?>GB'
+						text: 'Data Usage chart for <?php echo $_GET['ip']; ?>  Total in= <?php echo round($monthInTotal/1073741824,3);?>GB Total out= <?php  echo round($monthOutTotal/1073741824,3);?>GB'
 					}
 				}
 			});
