@@ -26,10 +26,12 @@
         }
 
         public function readip(){
-            $query = 'SELECT * from '.$this->table.' WHERE ip= ?';
+            $query = 'SELECT * from '.$this->table.' WHERE ip= ? AND date LIKE ?"/%"';
 
             $stmt= $this->conn->prepare($query);
- 	    $stmt->bindParam(1, $this->ip);
+            $stmt->bindParam(1, $this->ip);
+            $stmt->bindParam(2, $this->month);
+         
             $stmt->execute();
  
 	

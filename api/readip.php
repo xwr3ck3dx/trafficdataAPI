@@ -10,6 +10,7 @@
 
     $trafficdata=new Trafficdata($db);
     $trafficdata->ip=isset($_GET['ip'])?$_GET['ip']:die();
+    $trafficdata->month=isset($_GET['mon'])?$_GET['mon']:die();
     $result = $trafficdata->readip();
     $num = $result->rowCount();
 
